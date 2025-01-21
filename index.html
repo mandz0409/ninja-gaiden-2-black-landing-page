@@ -1,22 +1,39 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css2?family=Enriqueta:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<title>Video Background</title>
 	<style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
+        body, html {
             margin: 0;
             padding: 0;
-            color: #FFFFFF;
+            height: 100%;
         }
-
+        .video-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+			display: none;
+        }
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%) scale(2); /* Zoom in by scaling */
+            object-fit: cover;
+        }
         .content {
-            display: none;
+            position: relative;
+			display: none;
+            z-index: 1;
+            color: white;
             text-align: center;
         }
 
@@ -41,6 +58,24 @@
             animation: spinZoom 0.7s linear infinite;
         }
 
+
+        /* Left and right arrow styles */
+        .arrow {
+            cursor: pointer;
+            font-size: 2rem;
+            padding: 0 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         .ss-gallery {
             position: relative;
             display: block;
@@ -48,21 +83,20 @@
             width: 100%;
         }
 
-		.ss-gallery img {
+        .ss-gallery img {
             box-shadow: 10px 10px 0 red;
-		}
+        }
 
         .column-ss {
-            float: left;
-            width: 25%;
-            padding: 5px;
+            flex: 0 0 auto; /* Prevent images from shrinking or growing */
+            width: 23%; /* Set a fixed width for each image */
         }
 
         .column-ss img {
             opacity: 0.8;
             cursor: pointer;
-			border: 0;
-            box-shadow: 10px 10px 0 red;
+            border: 0;
+            box-shadow: 7px 7px 2px red;
         }
 
         .column-ss img:hover {
@@ -76,7 +110,10 @@
         }
 
         .ss-row {
-            width: 100%;
+            display: flex;
+            overflow-x: auto;
+            gap: 10px; /* Space between images */
+            padding: 10px 0; /* Padding around the images */
         }
 
         .closebtn {
@@ -89,11 +126,17 @@
         }
 
         .fade-in-image {
-            animation: fadeIn 3s;
-            -webkit-animation: fadeIn 3s;
-            -moz-animation: fadeIn 3s;
-            -o-animation: fadeIn 3s;
-            -ms-animation: fadeIn 3s;
+            animation: fadeIn 5s;
+            -webkit-animation: fadeIn 5s;
+            -moz-animation: fadeIn 5s;
+            -o-animation: fadeIn 5s;
+            -ms-animation: fadeIn 5s;
+        }
+
+        .scroll-sec {
+            display: flex;
+            align-items: center;
+            position: relative;
         }
 
         .sec-2 {
@@ -102,7 +145,7 @@
             padding-top: 56%;
             overflow: hidden;
             border: 0;
-			box-shadow: 10px 10px 0 red;
+            box-shadow: 10px 10px 2px red;
             border-radius: 20px;
         }
 
@@ -536,27 +579,34 @@
 
         }
 
-        /* Define the fade-in animation */
-        @keyframes fadeInEffect {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
+        /*!* Define the fade-in animation *!*/
+        /*@keyframes fadeInEffect {*/
+        /*    0% {*/
+        /*        opacity: 0;*/
+        /*    }*/
+        /*    100% {*/
+        /*        opacity: 1;*/
+        /*    }*/
+        /*}*/
 	</style>
-	<title>Ninja Gaiden Black 2</title>
 </head>
 <body class="bg-black" onload="initializeGallery()">
+<div class="video-wrapper fade-in-image">
+	<iframe
+			class="video-bg"
+			src="https://www.youtube.com/embed/66UeiLoNKWI?autoplay=1&mute=1&loop=1&playlist=66UeiLoNKWI"
+			frameborder="0"
+			allow="autoplay; encrypted-media; fullscreen"
+			allowfullscreen>
+	</iframe>
+</div>
 <div class="div-spinner">
 	<img src="https://static-00.iconduck.com/assets.00/star-shuriken-icon-2048x2048-nn4n7r3w.png" alt="Loading..." class="spinner">
 </div>
 <div class="content fade-in-image">
 	<div class="font-sans-montserrat w-full justify-content-center d-flex shadow-lg mobile-radius">
 		<div class="header-image-w">
-			<img src="https://s.pacn.ws/gallery/large/GA.08533.0009.png?sq0n6x&v=PX-407" style="width: 100%">
+			<img src="https://s.pacn.ws/gallery/large/GA.08609.0001.jpg?sqfeo5&v=PX-408" style="width: 100%">
 		</div>
 	</div>
 	<div class="font-sans-montserrat w-full justify-content-center d-flex shadow-lg py-6 mobile-radius">
@@ -570,19 +620,35 @@
 								<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
 								<img id="expandedImg" class="rounded-lg w-full">
 							</div>
-							<div class="ss-row">
-								<div class="column-ss">
-									<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" class="rounded-lg w-full" alt="ss-ngb-1" onclick="myFunction(this);">
+							<div class="scroll-sec">
+								<button class="arrow" id="scroll-left" onclick="scrollRow(-1)">&#8249;</button>
+								<div class="ss-row" id="image-row">
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" class="rounded-lg w-full" alt="ss-ngb-1" onclick="myFunction(this);">
+									</div>
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-2" class="rounded-lg w-full" onclick="myFunction(this);">
+									</div>
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-3" class="rounded-lg w-full" onclick="myFunction(this);">
+									</div>
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-4" class="rounded-lg w-full" onclick="myFunction(this);">
+									</div>
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" class="rounded-lg w-full" alt="ss-ngb-1" onclick="myFunction(this);">
+									</div>
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-2" class="rounded-lg w-full" onclick="myFunction(this);">
+									</div>
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-3" class="rounded-lg w-full" onclick="myFunction(this);">
+									</div>
+									<div class="column-ss">
+										<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-4" class="rounded-lg w-full" onclick="myFunction(this);">
+									</div>
 								</div>
-								<div class="column-ss">
-									<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-2" class="rounded-lg w-full" onclick="myFunction(this);">
-								</div>
-								<div class="column-ss">
-									<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-3" class="rounded-lg w-full" onclick="myFunction(this);">
-								</div>
-								<div class="column-ss">
-									<img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="ss-ngb-4" class="rounded-lg w-full" onclick="myFunction(this);">
-								</div>
+								<button class="arrow" id="scroll-right" onclick="scrollRow(1)">&#8250;</button>
 							</div>
 						</div>
 					</div>
@@ -594,11 +660,11 @@
 				</div>
 
 				<div class="d-flex flex-direction justify-content-center items-center w-full gap-6 align-items-center" style="margin-top: 3rem">
-<!--					<div class="p-image-w-mid max-w-xs mx-auto">-->
-<!--						<p class="p-desc-text leading-relaxed">-->
-<!--							(Blank space)-->
-<!--						</p>-->
-<!--					</div>-->
+					<!--					<div class="p-image-w-mid max-w-xs mx-auto">-->
+					<!--						<p class="p-desc-text leading-relaxed">-->
+					<!--							(Blank space)-->
+					<!--						</p>-->
+					<!--					</div>-->
 					<div class="p-desc-container-mid text-left">
 						<div class="sec-2">
 							<div class="ng2-trailer">
@@ -608,25 +674,34 @@
 					</div>
 				</div>
 
-<!--				<div class="d-flex flex-direction justify-content-center prod-info gap-6 mx-auto" style="background-color: #FFFFFF; border-radius: 2rem; margin-top: 3rem">-->
-<!--					<div class="prod-info-img" style="margin: 0 auto">-->
-<!--						<img src="https://m.media-amazon.com/images/I/51vZGdrd5aL._AC_UF1000,1000_QL80_.jpg" alt="Placeholder Image" class="rounded-lg shadow-lg max-w-full" style="padding: 2rem;">-->
-<!--					</div>-->
-<!--					<div class="prod-info-desc mx-auto text-left" style="color: black">-->
-<!--						<h1 class="p-title-text font-700 py-4">Ninja Gaiden Black II</h1>-->
-<!--						<p class="p-desc-text leading-relaxed">-->
-<!--							Product description goes here-->
-<!--						</p>-->
-<!--					</div>-->
-<!--				</div>-->
+				<!--				<div class="d-flex flex-direction justify-content-center prod-info gap-6 mx-auto" style="background-color: #FFFFFF; border-radius: 2rem; margin-top: 3rem">-->
+				<!--					<div class="prod-info-img" style="margin: 0 auto">-->
+				<!--						<img src="https://m.media-amazon.com/images/I/51vZGdrd5aL._AC_UF1000,1000_QL80_.jpg" alt="Placeholder Image" class="rounded-lg shadow-lg max-w-full" style="padding: 2rem;">-->
+				<!--					</div>-->
+				<!--					<div class="prod-info-desc mx-auto text-left" style="color: black">-->
+				<!--						<h1 class="p-title-text font-700 py-4">Ninja Gaiden Black II</h1>-->
+				<!--						<p class="p-desc-text leading-relaxed">-->
+				<!--							Product description goes here-->
+				<!--						</p>-->
+				<!--					</div>-->
+				<!--				</div>-->
 			</div>
 		</div>
 	</div>
 </div>
 <script>
+	const row = document.getElementById('image-row');
+	const leftArrow = document.getElementById('scroll-left');
+	const rightArrow = document.getElementById('scroll-right');
+
+	function scrollRow(direction) {
+		const scrollAmount = 200; // Pixels to scroll
+		row.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+	}
 	setTimeout(function() {
 		document.querySelector('.div-spinner').style.display = 'none';
 		document.querySelector('.content').style.display = 'block';
+		document.querySelector('.video-wrapper').style.display = 'block';
 	}, 3000);
 
 	function initializeGallery() {
