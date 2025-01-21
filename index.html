@@ -5,15 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Enriqueta:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<style>
-		* {
-			box-sizing: border-box;
-		}
+        * {
+            box-sizing: border-box;
+        }
 
-		body {
-			margin: 0;
-			padding: 0;
+        body {
+            margin: 0;
+            padding: 0;
             color: #FFFFFF;
-		}
+        }
 
         .content {
             display: none;
@@ -48,6 +48,10 @@
             width: 100%;
         }
 
+		.ss-gallery img {
+            box-shadow: 10px 10px 0 red;
+		}
+
         .column-ss {
             float: left;
             width: 25%;
@@ -57,6 +61,8 @@
         .column-ss img {
             opacity: 0.8;
             cursor: pointer;
+			border: 0;
+            box-shadow: 10px 10px 0 red;
         }
 
         .column-ss img:hover {
@@ -93,8 +99,11 @@
         .sec-2 {
             position: relative;
             width: 100%;
-            padding-top: 65%;
+            padding-top: 56%;
             overflow: hidden;
+            border: 0;
+			box-shadow: 15px 15px 0 red;
+            border-radius: 20px;
         }
 
         .ng2-trailer iframe {
@@ -103,16 +112,16 @@
             right: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+
         }
 
-		.prod-info {
-			width: 100%;
-		}
+        .prod-info {
+            width: 100%;
+        }
 
         .header-image-w {
-			width: 100%;
-		}
+            width: 100%;
+        }
 
         @keyframes spinZoom {
             0% {
@@ -325,7 +334,7 @@
 
         .prod-info-desc {
             width: 100%;
-			order: 2;
+            order: 2;
         }
 
         .p-image-w-mid {
@@ -363,10 +372,10 @@
             width: 100%;
         }
 
-		.prod-info-img {
+        .prod-info-img {
             width: 70%;
-			order: 1;
-		}
+            order: 1;
+        }
 
         .p-desc-container-mid {
             width: 100%;
@@ -454,7 +463,11 @@
                 width: 50%;
             }
 
-            .p-desc-container, .p-desc-container-mid {
+            .p-desc-container-mid {
+                width: 80%;
+            }
+
+            .p-desc-container {
                 width: 50%;
             }
 
@@ -466,9 +479,9 @@
                 width: 70%;
             }
 
-			.prod-info {
-				width: 70%;
-			}
+            .prod-info {
+                width: 70%;
+            }
 
             .h-chibi-w img{
                 width: 90%;
@@ -504,8 +517,8 @@
             }
 
             .header-image-w {
-				width: 55%;
-			}
+                width: 55%;
+            }
 
             .p-title-text {
                 font-size: 2.2rem;
@@ -581,11 +594,11 @@
 				</div>
 
 				<div class="d-flex flex-direction justify-content-center items-center w-full gap-6 align-items-center" style="margin-top: 3rem">
-					<div class="p-image-w-mid max-w-xs mx-auto">
-						<p class="p-desc-text leading-relaxed">
-							(Blank space)
-						</p>
-					</div>
+<!--					<div class="p-image-w-mid max-w-xs mx-auto">-->
+<!--						<p class="p-desc-text leading-relaxed">-->
+<!--							(Blank space)-->
+<!--						</p>-->
+<!--					</div>-->
 					<div class="p-desc-container-mid text-left">
 						<div class="sec-2">
 							<div class="ng2-trailer">
@@ -595,17 +608,17 @@
 					</div>
 				</div>
 
-				<div class="d-flex flex-direction justify-content-center prod-info gap-6 mx-auto" style="background-color: #FFFFFF; border-radius: 2rem; margin-top: 3rem">
-					<div class="prod-info-img" style="margin: 0 auto">
-						<img src="https://m.media-amazon.com/images/I/51vZGdrd5aL._AC_UF1000,1000_QL80_.jpg" alt="Placeholder Image" class="rounded-lg shadow-lg max-w-full" style="padding: 2rem;">
-					</div>
-					<div class="prod-info-desc mx-auto text-left" style="color: black">
-						<h1 class="p-title-text font-700 py-4">Ninja Gaiden Black II</h1>
-						<p class="p-desc-text leading-relaxed">
-							Product description goes here
-						</p>
-					</div>
-				</div>
+<!--				<div class="d-flex flex-direction justify-content-center prod-info gap-6 mx-auto" style="background-color: #FFFFFF; border-radius: 2rem; margin-top: 3rem">-->
+<!--					<div class="prod-info-img" style="margin: 0 auto">-->
+<!--						<img src="https://m.media-amazon.com/images/I/51vZGdrd5aL._AC_UF1000,1000_QL80_.jpg" alt="Placeholder Image" class="rounded-lg shadow-lg max-w-full" style="padding: 2rem;">-->
+<!--					</div>-->
+<!--					<div class="prod-info-desc mx-auto text-left" style="color: black">-->
+<!--						<h1 class="p-title-text font-700 py-4">Ninja Gaiden Black II</h1>-->
+<!--						<p class="p-desc-text leading-relaxed">-->
+<!--							Product description goes here-->
+<!--						</p>-->
+<!--					</div>-->
+<!--				</div>-->
 			</div>
 		</div>
 	</div>
